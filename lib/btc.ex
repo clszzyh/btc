@@ -1,18 +1,7 @@
 defmodule Btc do
-  @moduledoc """
-  Documentation for `Btc`.
-  """
+  @external_resource readme = Path.join([__DIR__, "../README.md"])
+  @moduledoc readme |> File.read!() |> String.split("<!-- MDOC -->") |> Enum.fetch!(1)
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Btc.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  @version Mix.Project.config()[:version]
+  def version, do: @version
 end

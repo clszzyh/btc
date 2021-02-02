@@ -13,10 +13,11 @@ defmodule Btc.Addresses.P2pkh do
       ScriptPubKey= OP_DUP OP_HASH160 <Public KeyHash> OP_EQUAL OP_CHECKSIG
       ScriptSig= <Signature> <Public Key>
 
-  A P2PKH address A is created from the public key K by the following:
+  ## Struct
 
       A = BASE58CHECK( 0x00 HASH160( K ) )
-      Where HASH160( K ) is equivalent to RIPEMD160( SHA256( K ) ) and 0x00 represents the version byte (for P2PKH)
+      Where HASH160( K ) is equivalent to RIPEMD160( SHA256( K ) )
+      and 0x00 represents the version byte (for P2PKH)
 
   ## Summary
 
@@ -58,6 +59,12 @@ defmodule Btc.Addresses.P2pkh do
     end
   end
 
+  defp generate_address_1(network, public_key) when is_map_key(@network_prefixes, network) do
+    Base58Check.encode(@network_prefixes[network], Util.hash160(public_key))
+  end
+
+  defp generate_address_1(_, _), do: {:error, :error_network}
+
   @doc """
   ## Example
 
@@ -72,12 +79,6 @@ defmodule Btc.Addresses.P2pkh do
   def address_valid?(address, network) do
     address |> Base58Check.decode() |> address_valid_1?(network)
   end
-
-  defp generate_address_1(network, public_key) when is_map_key(@network_prefixes, network) do
-    Base58Check.encode(@network_prefixes[network], Util.hash160(public_key))
-  end
-
-  defp generate_address_1(_, _), do: {:error, :error_network}
 
   defp address_valid_1?({:ok, {prefix, _}}, network)
        when {network, prefix} in @network_prefix_keyword,

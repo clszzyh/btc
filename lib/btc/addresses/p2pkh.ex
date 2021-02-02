@@ -1,7 +1,7 @@
 defmodule Btc.Addresses.P2pkh do
-  use Btc.Address
-
   @moduledoc """
+  Pay-to-Public-Key-Hash
+
   ## Links
 
   * https://en.bitcoinwiki.org/wiki/Pay-to-Pubkey_Hash
@@ -30,6 +30,8 @@ defmodule Btc.Addresses.P2pkh do
     * leading symbol: `m or n`
     * example: `mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn`
   """
+
+  use Btc.Address
 
   @network_prefixes %{mainnet: <<0>>, testnet: <<111>>}
   @network_prefix_keyword Keyword.new(@network_prefixes)
@@ -80,8 +82,8 @@ defmodule Btc.Addresses.P2pkh do
     address |> Base58Check.decode() |> address_valid_1?(network)
   end
 
-  defp address_valid_1?({:ok, {prefix, _}}, network)
-       when {network, prefix} in @network_prefix_keyword,
+  defp address_valid_1?({:ok, {prefix, payload}}, network)
+       when {network, prefix} in @network_prefix_keyword and byte_size(payload) == 20,
        do: true
 
   defp address_valid_1?(_, _), do: false

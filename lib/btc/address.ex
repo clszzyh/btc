@@ -43,7 +43,7 @@ defmodule Btc.Address do
     quote do
       alias unquote(__MODULE__)
       alias Btc.Base58Check
-      alias Btc.Bech32
+      alias Btc.Bip0173
       alias Btc.Util
       @behaviour unquote(__MODULE__)
 

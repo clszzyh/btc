@@ -1,4 +1,4 @@
-defmodule Btc.Bech32 do
+defmodule Btc.Bip0173 do
   @moduledoc """
   ## Summary
 
@@ -8,21 +8,41 @@ defmodule Btc.Bech32 do
       address format is supported in many popular wallets and is the
       preferred address scheme
 
+  A Bech32[2] string is at most 90 characters long and consists of:
+
+  * The human-readable part, which is intended to convey the type of
+  data, or anything else that is relevant to the reader. This part
+  MUST contain 1 to 83 US-ASCII characters, with each character having
+  a value in the range [33-126]. HRP validity may be further
+  restricted by specific applications.
+
+  * The separator, which is always "1". In case "1" is allowed inside
+  the human-readable part, the last one in the string is the
+  separator[3].
+
+  * The data part, which is at least 6 characters long and only
+    consists of alphanumeric characters excluding "1", "b", "i", and
+    "o"[4].
+
+
   ## Example
 
-      Examples of the address format being used on mainnet are the
-      TXIDs
+      Examples of the address format being used on mainnet are the TXIDs
       4ef47f6eb681d5d9fa2f7e16336cd629303c635e8da51e425b76088be9c8744c
-      and
-      514a33f1d46179b89e1fea7bbb07b682ab14083a276979f91038369d1a8d689b. And
-      addresses bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq and
-      bc1qc7slrfxkknqcq2jevvvkdgvrt8080852dfjewde450xdlk4ugp7szw5tk9.
+      514a33f1d46179b89e1fea7bbb07b682ab14083a276979f91038369d1a8d689b
+      And addresses
+      bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq
+      bc1qc7slrfxkknqcq2jevvvkdgvrt8080852dfjewde450xdlk4ugp7szw5tk9
 
   """
 
   alias Btc.Address
 
   @network_map %{"bc" => :mainnet, "tb" => :testnet}
+
+  ## credo:disable-for-next-line
+  ## TODO implement this.
+  defdelegate encode(hrp, data), to: Bech32
 
   @doc """
 

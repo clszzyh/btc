@@ -62,6 +62,7 @@ defmodule Btc.MixProject do
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.22", runtime: false},
+      {:bech32, ">= 0.0.0"},
       {:libsecp256k1, "~> 0.1.10"},
       {:b58, github: "dwyl/base58"}
     ]

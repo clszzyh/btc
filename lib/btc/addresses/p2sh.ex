@@ -1,5 +1,7 @@
 defmodule Btc.Addresses.P2sh do
   @moduledoc """
+  Pay-to-Script-Hash
+
   ## Links
 
   * https://en.bitcoin.it/wiki/Pay_to_script_hash
@@ -76,8 +78,8 @@ defmodule Btc.Addresses.P2sh do
     address |> Base58Check.decode() |> address_valid_1?(network)
   end
 
-  defp address_valid_1?({:ok, {prefix, _}}, network)
-       when {network, prefix} in @network_prefix_keyword,
+  defp address_valid_1?({:ok, {prefix, payload}}, network)
+       when {network, prefix} in @network_prefix_keyword and byte_size(payload) == 20,
        do: true
 
   defp address_valid_1?(_, _), do: false

@@ -5,6 +5,6 @@ defmodule BtcTest do
   doctest Btc.Base58Check
   doctest Btc.Addresses.P2pkh
   doctest Btc.Addresses.P2sh
-  # doctest Btc.Addresses.P2wpkh
-  # doctest Btc.Addresses.P2wsh
+  doctest Btc.Addresses.P2wpkh
+  doctest Btc.Addresses.P2wsh
 end

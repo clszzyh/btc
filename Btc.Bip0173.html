@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="btc v0.1.0">
+
+    <title>Btc.Bip0173 — btc v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+
+    <script src="dist/sidebar_items-004ddfa7b5.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="readme.html" class="sidebar-projectName">
+btc
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+Btc.Bip0173 <small class="app-vsn">(btc v0.1.0)</small>
+
+          <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/bip0173.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+
+      </h1>
+
+
+        <section id="moduledoc">
+<h2 id="module-summary" class="section-heading">
+  <a href="#module-summary" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Summary
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="nc">Bech32</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">segwit</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="nc">BIP</span><span class="w"> </span><span class="mi">0173</span><span class="o">.</span><span class="w"> </span><span class="nc">This</span><span class="w">
+</span><span class="n">address</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">known</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="s">&quot;bc1 addresses&quot;</span><span class="o">.</span><span class="w"> </span><span class="nc">Bech32</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">more</span><span class="w">
+</span><span class="n">efficient</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">space</span><span class="o">.</span><span class="w"> </span><span class="nc">As</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="nc">October</span><span class="w"> </span><span class="mi">2020</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">Bech32</span><span class="w">
+</span><span class="n">address</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">supported</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">many</span><span class="w"> </span><span class="n">popular</span><span class="w"> </span><span class="n">wallets</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w">
+</span><span class="n">preferred</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="n">scheme</span></code></pre><p>A Bech32[2] string is at most 90 characters long and consists of:</p><ul><li><p>The human-readable part, which is intended to convey the type of
+data, or anything else that is relevant to the reader. This part
+MUST contain 1 to 83 US-ASCII characters, with each character having
+a value in the range [33-126]. HRP validity may be further
+restricted by specific applications.</p></li><li><p>The separator, which is always &quot;1&quot;. In case &quot;1&quot; is allowed inside
+the human-readable part, the last one in the string is the
+separator[3].</p></li><li><p>The data part, which is at least 6 characters long and only
+consists of alphanumeric characters excluding &quot;1&quot;, &quot;b&quot;, &quot;i&quot;, and
+&quot;o&quot;[4].</p></li></ul><h2 id="module-example" class="section-heading">
+  <a href="#module-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="nc">Examples</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">mainnet</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">TXIDs</span><span class="w">
+</span><span class="mi">4</span><span class="n">ef47f6eb681d5d9fa2f7e16336cd629303c635e8da51e425b76088be9c8744c</span><span class="w">
+</span><span class="mi">514</span><span class="n">a33f1d46179b89e1fea7bbb07b682ab14083a276979f91038369d1a8d689b</span><span class="w">
+</span><span class="nc">And</span><span class="w"> </span><span class="n">addresses</span><span class="w">
+</span><span class="n">bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq</span><span class="w">
+</span><span class="n">bc1qc7slrfxkknqcq2jevvvkdgvrt8080852dfjewde450xdlk4ugp7szw5tk9</span></code></pre>
+        </section>
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode/1">decode(data)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Software interpreting a segwit address</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode/2">encode(hrp, data)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/bech32/1.0.0/Bech32.html#encode/2"><code class="inline">Bech32.encode/2</code></a>.</p></div>
+
+</div>
+
+  </div>
+
+        </section>
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions
+          </h1>
+          <div class="functions-list">
+<section class="detail" id="decode/1">
+
+  <div class="detail-header">
+    <a href="#decode/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode(data)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/bip0173.ex#L65" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>decode(b :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  {:ok, network :: <a href="Btc.Address.html#t:network/0">Btc.Address.network</a>(), witness_version :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+   data :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}
+  | {:error, reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+
+      </div>
+
+<p>Software interpreting a segwit address:</p><ul><li>MUST verify that the human-readable part is &quot;bc&quot; for mainnet and &quot;tb&quot; for testnet.</li><li>MUST verify that the first decoded data value (the witness version) is between 0 and 16, inclusive.</li></ul><p><a href="https://github.com/f2pool/bech32-elixir/blob/master/lib/bech32.ex#L257">https://github.com/f2pool/bech32-elixir/blob/master/lib/bech32.ex#L257</a>
+<a href="https://en.bitcoin.it/wiki/Bech32">https://en.bitcoin.it/wiki/Bech32</a>
+<a href="https://en.bitcoin.it/wiki/BIP_0173">https://en.bitcoin.it/wiki/BIP_0173</a></p><h2 id="decode/1-example" class="section-heading">
+  <a href="#decode/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">match?</span><span class="p" data-group-id="5708911650-1">(</span><span class="p" data-group-id="5708911650-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="5708911650-2">}</span><span class="p">,</span><span class="w"> </span><span class="nc">Elixir.Btc.Bip0173</span><span class="o">.</span><span class="n">decode</span><span class="p" data-group-id="5708911650-3">(</span><span class="s">&quot;bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4&quot;</span><span class="p" data-group-id="5708911650-3">)</span><span class="p" data-group-id="5708911650-1">)</span><span class="w">
+</span><span class="no">true</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="encode/2">
+
+  <div class="detail-header">
+    <a href="#encode/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encode(hrp, data)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/bip0173.ex#L45" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>See <a href="https://hexdocs.pm/bech32/1.0.0/Bech32.html#encode/2"><code class="inline">Bech32.encode/2</code></a>.</p>
+  </section>
+</section>
+
+          </div>
+        </section>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

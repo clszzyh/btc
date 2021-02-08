@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="btc v0.1.0">
+
+    <title>Btc.Addresses.P2pkh — btc v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+
+    <script src="dist/sidebar_items-004ddfa7b5.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="readme.html" class="sidebar-projectName">
+btc
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+Btc.Addresses.P2pkh <small class="app-vsn">(btc v0.1.0)</small>
+
+          <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/addresses/p2pkh.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+
+      </h1>
+
+
+        <section id="moduledoc">
+<p>Pay-to-Public-Key-Hash</p><h2 id="module-links" class="section-heading">
+  <a href="#module-links" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Links
+</h2>
+<ul><li><a href="https://en.bitcoinwiki.org/wiki/Pay-to-Pubkey_Hash">https://en.bitcoinwiki.org/wiki/Pay-to-Pubkey_Hash</a></li><li><a href="https://en.bitcoin.it/wiki/List_of_address_prefixes">https://en.bitcoin.it/wiki/List_of_address_prefixes</a></li><li><a href="https://bitcoin.stackexchange.com/questions/72775/is-it-possible-to-convert-an-address-from-p2pkh-to-p2sh">https://bitcoin.stackexchange.com/questions/72775/is-it-possible-to-convert-an-address-from-p2pkh-to-p2sh</a></li></ul><h2 id="module-scriptpubkey-and-scriptsig-display" class="section-heading">
+  <a href="#module-scriptpubkey-and-scriptsig-display" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  ScriptPubKey and ScriptSig Display
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="nc">ScriptPubKey</span><span class="o">=</span><span class="w"> </span><span class="nc">OP_DUP</span><span class="w"> </span><span class="nc">OP_HASH160</span><span class="w"> </span><span class="o">&lt;</span><span class="nc">Public</span><span class="w"> </span><span class="nc">KeyHash</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">OP_EQUAL</span><span class="w"> </span><span class="nc">OP_CHECKSIG</span><span class="w">
+</span><span class="nc">ScriptSig</span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nc">Signature</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="nc">Public</span><span class="w"> </span><span class="nc">Key</span><span class="o">&gt;</span></code></pre><h2 id="module-struct" class="section-heading">
+  <a href="#module-struct" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Struct
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="nc">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">BASE58CHECK</span><span class="p" data-group-id="4904024106-1">(</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="nc">HASH160</span><span class="p" data-group-id="4904024106-2">(</span><span class="w"> </span><span class="nc">K</span><span class="w"> </span><span class="p" data-group-id="4904024106-2">)</span><span class="w"> </span><span class="p" data-group-id="4904024106-1">)</span><span class="w">
+</span><span class="nc">Where</span><span class="w"> </span><span class="nc">HASH160</span><span class="p" data-group-id="4904024106-3">(</span><span class="w"> </span><span class="nc">K</span><span class="w"> </span><span class="p" data-group-id="4904024106-3">)</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">equivalent</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nc">RIPEMD160</span><span class="p" data-group-id="4904024106-4">(</span><span class="w"> </span><span class="nc">SHA256</span><span class="p" data-group-id="4904024106-5">(</span><span class="w"> </span><span class="nc">K</span><span class="w"> </span><span class="p" data-group-id="4904024106-5">)</span><span class="w"> </span><span class="p" data-group-id="4904024106-4">)</span><span class="w">
+</span><span class="ow">and</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="n">represents</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="p" data-group-id="4904024106-6">(</span><span class="k">for</span><span class="w"> </span><span class="nc">P2PKH</span><span class="p" data-group-id="4904024106-6">)</span></code></pre><h2 id="module-summary" class="section-heading">
+  <a href="#module-summary" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Summary
+</h2>
+<ul><li>mainnet<ul><li>prefix: <code class="inline">0</code></li><li>leading symbol: <code class="inline">1</code></li><li>example: <code class="inline">17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem</code></li></ul></li><li>testnet<ul><li>prefix: <code class="inline">111</code></li><li>leading symbol: <code class="inline">m or n</code></li><li>example: <code class="inline">mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn</code></li></ul></li></ul><h2 id="module-doctest-mainnet" class="section-heading">
+  <a href="#module-doctest-mainnet" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Doctest mainnet
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">network</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:mainnet</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">entropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Btc.Util</span><span class="o">.</span><span class="n">strong_rand</span><span class="p" data-group-id="7539726888-1">(</span><span class="p" data-group-id="7539726888-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="7539726888-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7539726888-3">{</span><span class="c">_priv_key</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p" data-group-id="7539726888-3">}</span><span class="p" data-group-id="7539726888-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">generate_address</span><span class="p" data-group-id="7539726888-4">(</span><span class="n">entropy</span><span class="p">,</span><span class="w"> </span><span class="n">network</span><span class="p" data-group-id="7539726888-4">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">address_valid?</span><span class="p" data-group-id="7539726888-5">(</span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">network</span><span class="p" data-group-id="7539726888-5">)</span><span class="w">
+</span><span class="no">true</span></code></pre><h2 id="module-doctest-testnet" class="section-heading">
+  <a href="#module-doctest-testnet" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Doctest testnet
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">network</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:testnet</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">entropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Btc.Util</span><span class="o">.</span><span class="n">strong_rand</span><span class="p" data-group-id="1962702726-1">(</span><span class="p" data-group-id="1962702726-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="1962702726-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1962702726-3">{</span><span class="c">_priv_key</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p" data-group-id="1962702726-3">}</span><span class="p" data-group-id="1962702726-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">generate_address</span><span class="p" data-group-id="1962702726-4">(</span><span class="n">entropy</span><span class="p">,</span><span class="w"> </span><span class="n">network</span><span class="p" data-group-id="1962702726-4">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">address_valid?</span><span class="p" data-group-id="1962702726-5">(</span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">network</span><span class="p" data-group-id="1962702726-5">)</span><span class="w">
+</span><span class="no">true</span></code></pre>
+        </section>
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#address_valid?/2">address_valid?(address, network)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><h2>Example</h2><pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">address_valid?</span><span class="p" data-group-id="2066655528-1">(</span><span class="s">&quot;17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p" data-group-id="2066655528-1">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">address_valid?</span><span class="p" data-group-id="2066655528-2">(</span><span class="s">&quot;mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">:testnet</span><span class="p" data-group-id="2066655528-2">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">address_valid?</span><span class="p" data-group-id="2066655528-3">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p" data-group-id="2066655528-3">)</span><span class="w">
+</span><span class="no">false</span></code></pre></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#generate_address/2">generate_address(entropy, network)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><h2>Example</h2><pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">generate_address</span><span class="p" data-group-id="8982695767-1">(</span><span class="p" data-group-id="8982695767-2">&lt;&lt;</span><span class="mi">0</span><span class="o">::</span><span class="n">big</span><span class="o">-</span><span class="mi">256</span><span class="p" data-group-id="8982695767-2">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p" data-group-id="8982695767-1">)</span><span class="w">
+</span><span class="p" data-group-id="8982695767-3">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;Public key generation error&#39;</span><span class="p" data-group-id="8982695767-3">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">entropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8982695767-4">&lt;&lt;</span><span class="mi">72</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">203</span><span class="p">,</span><span class="w"> </span><span class="mi">107</span><span class="p">,</span><span class="w"> </span><span class="mi">197</span><span class="p">,</span><span class="w"> </span><span class="mi">248</span><span class="p">,</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w"> </span><span class="mi">227</span><span class="p">,</span><span class="w"> </span><span class="mi">205</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w"> </span><span class="mi">217</span><span class="p">,</span><span class="w"> </span><span class="mi">112</span><span class="p">,</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w"> </span><span class="mi">227</span><span class="p">,</span><span class="w"> </span><span class="mi">131</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w"> </span><span class="mi">181</span><span class="p">,</span><span class="w"> </span><span class="mi">203</span><span class="p">,</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w"> </span><span class="mi">172</span><span class="p">,</span><span class="w"> </span><span class="mi">54</span><span class="p">,</span><span class="w"> </span><span class="mi">181</span><span class="p">,</span><span class="w"> </span><span class="mi">102</span><span class="p" data-group-id="8982695767-4">&gt;&gt;</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8982695767-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8982695767-6">{</span><span class="n">priv_key</span><span class="p">,</span><span class="w"> </span><span class="n">mainnet_address</span><span class="p" data-group-id="8982695767-6">}</span><span class="p" data-group-id="8982695767-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">generate_address</span><span class="p" data-group-id="8982695767-7">(</span><span class="n">entropy</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p" data-group-id="8982695767-7">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8982695767-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8982695767-9">{</span><span class="o">^</span><span class="n">priv_key</span><span class="p">,</span><span class="w"> </span><span class="n">testnet_address</span><span class="p" data-group-id="8982695767-9">}</span><span class="p" data-group-id="8982695767-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">generate_address</span><span class="p" data-group-id="8982695767-10">(</span><span class="n">entropy</span><span class="p">,</span><span class="w"> </span><span class="ss">:testnet</span><span class="p" data-group-id="8982695767-10">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="8982695767-11">{</span><span class="n">mainnet_address</span><span class="p">,</span><span class="w"> </span><span class="n">testnet_address</span><span class="p">,</span><span class="w"> </span><span class="n">byte_size</span><span class="p" data-group-id="8982695767-12">(</span><span class="n">priv_key</span><span class="p" data-group-id="8982695767-12">)</span><span class="p" data-group-id="8982695767-11">}</span><span class="w">
+</span><span class="p" data-group-id="8982695767-13">{</span><span class="s">&quot;1EmCKjrbhRJ7znmCg1LRTjZ5nHHxSVhUqJ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;muH9cnwaWSjNmuEpPaJoHemQeGtfPJRV5R&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p" data-group-id="8982695767-13">}</span></code></pre></div>
+
+</div>
+
+  </div>
+
+        </section>
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions
+          </h1>
+          <div class="functions-list">
+<section class="detail" id="address_valid?/2">
+
+  <div class="detail-header">
+    <a href="#address_valid?/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">address_valid?(address, network)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/addresses/p2pkh.ex#L81" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<h2 id="address_valid?/2-example" class="section-heading">
+  <a href="#address_valid?/2-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">address_valid?</span><span class="p" data-group-id="2066655528-1">(</span><span class="s">&quot;17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p" data-group-id="2066655528-1">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">address_valid?</span><span class="p" data-group-id="2066655528-2">(</span><span class="s">&quot;mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">:testnet</span><span class="p" data-group-id="2066655528-2">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">address_valid?</span><span class="p" data-group-id="2066655528-3">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p" data-group-id="2066655528-3">)</span><span class="w">
+</span><span class="no">false</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="generate_address/2">
+
+  <div class="detail-header">
+    <a href="#generate_address/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generate_address(entropy, network)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/addresses/p2pkh.ex#L54" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<h2 id="generate_address/2-example" class="section-heading">
+  <a href="#generate_address/2-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">generate_address</span><span class="p" data-group-id="8982695767-1">(</span><span class="p" data-group-id="8982695767-2">&lt;&lt;</span><span class="mi">0</span><span class="o">::</span><span class="n">big</span><span class="o">-</span><span class="mi">256</span><span class="p" data-group-id="8982695767-2">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p" data-group-id="8982695767-1">)</span><span class="w">
+</span><span class="p" data-group-id="8982695767-3">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;Public key generation error&#39;</span><span class="p" data-group-id="8982695767-3">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">entropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8982695767-4">&lt;&lt;</span><span class="mi">72</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">203</span><span class="p">,</span><span class="w"> </span><span class="mi">107</span><span class="p">,</span><span class="w"> </span><span class="mi">197</span><span class="p">,</span><span class="w"> </span><span class="mi">248</span><span class="p">,</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w"> </span><span class="mi">227</span><span class="p">,</span><span class="w"> </span><span class="mi">205</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w"> </span><span class="mi">217</span><span class="p">,</span><span class="w"> </span><span class="mi">112</span><span class="p">,</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w"> </span><span class="mi">227</span><span class="p">,</span><span class="w"> </span><span class="mi">131</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w"> </span><span class="mi">181</span><span class="p">,</span><span class="w"> </span><span class="mi">203</span><span class="p">,</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w"> </span><span class="mi">172</span><span class="p">,</span><span class="w"> </span><span class="mi">54</span><span class="p">,</span><span class="w"> </span><span class="mi">181</span><span class="p">,</span><span class="w"> </span><span class="mi">102</span><span class="p" data-group-id="8982695767-4">&gt;&gt;</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8982695767-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8982695767-6">{</span><span class="n">priv_key</span><span class="p">,</span><span class="w"> </span><span class="n">mainnet_address</span><span class="p" data-group-id="8982695767-6">}</span><span class="p" data-group-id="8982695767-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">generate_address</span><span class="p" data-group-id="8982695767-7">(</span><span class="n">entropy</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p" data-group-id="8982695767-7">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8982695767-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8982695767-9">{</span><span class="o">^</span><span class="n">priv_key</span><span class="p">,</span><span class="w"> </span><span class="n">testnet_address</span><span class="p" data-group-id="8982695767-9">}</span><span class="p" data-group-id="8982695767-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Elixir.Btc.Addresses.P2pkh</span><span class="o">.</span><span class="n">generate_address</span><span class="p" data-group-id="8982695767-10">(</span><span class="n">entropy</span><span class="p">,</span><span class="w"> </span><span class="ss">:testnet</span><span class="p" data-group-id="8982695767-10">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="8982695767-11">{</span><span class="n">mainnet_address</span><span class="p">,</span><span class="w"> </span><span class="n">testnet_address</span><span class="p">,</span><span class="w"> </span><span class="n">byte_size</span><span class="p" data-group-id="8982695767-12">(</span><span class="n">priv_key</span><span class="p" data-group-id="8982695767-12">)</span><span class="p" data-group-id="8982695767-11">}</span><span class="w">
+</span><span class="p" data-group-id="8982695767-13">{</span><span class="s">&quot;1EmCKjrbhRJ7znmCg1LRTjZ5nHHxSVhUqJ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;muH9cnwaWSjNmuEpPaJoHemQeGtfPJRV5R&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p" data-group-id="8982695767-13">}</span></code></pre>
+  </section>
+</section>
+
+          </div>
+        </section>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

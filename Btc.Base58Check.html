@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="btc v0.1.0">
+
+    <title>Btc.Base58Check — btc v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+
+    <script src="dist/sidebar_items-004ddfa7b5.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="readme.html" class="sidebar-projectName">
+btc
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+Btc.Base58Check <small class="app-vsn">(btc v0.1.0)</small>
+
+          <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/base58_check.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+
+      </h1>
+
+
+        <section id="moduledoc">
+<p><a href="https://en.bitcoin.it/wiki/Base58Check_encoding">https://en.bitcoin.it/wiki/Base58Check_encoding</a>
+<a href="http://lenschulwitz.com/base58">http://lenschulwitz.com/base58</a></p><h2 id="module-creating-a-base58check-string" class="section-heading">
+  <a href="#module-creating-a-base58check-string" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Creating a Base58Check string
+</h2>
+<ul><li>Take the version byte and payload bytes, and concatenate them
+together (bytewise).</li><li>Take the first four bytes of SHA256(SHA256(results of step 1))</li><li>Concatenate the results of step 1 and the results of step 2
+together (bytewise).</li><li>Treating the results of step 3 - a series of bytes - as a single
+big-endian bignumber, convert to base-58 using normal mathematical
+steps (bignumber division) and the base-58 alphabet described
+below. The result should be normalized to not have any leading
+base-58 zeroes (character '1').</li><li>The leading character '1', which has a value of zero in base58, is
+reserved for representing an entire leading zero byte, as when it
+is in a leading position, has no value as a base-58 symbol. There
+can be one or more leading '1's when necessary to represent one or
+more leading zero bytes. Count the number of leading zero bytes
+that were the result of step 3 (for old Bitcoin addresses, there
+will always be at least one for the version/application byte; for
+new addresses, there will never be any). Each leading zero byte
+shall be represented by its own character '1' in the final result.</li><li>Concatenate the 1's from step 5 with the results of step 4. This
+is the Base58Check result.</li></ul>
+        </section>
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode/1">decode(binary)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><h2>Example</h2><pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Elixir.Btc.Base58Check</span><span class="o">.</span><span class="n">decode</span><span class="p" data-group-id="0727767280-1">(</span><span class="s">&quot;17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem&quot;</span><span class="p" data-group-id="0727767280-1">)</span><span class="w">
+</span><span class="p" data-group-id="0727767280-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0727767280-3">{</span><span class="p" data-group-id="0727767280-4">&lt;&lt;</span><span class="mi">0</span><span class="p" data-group-id="0727767280-4">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0727767280-5">&lt;&lt;</span><span class="mi">71</span><span class="p">,</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"> </span><span class="mi">108</span><span class="p">,</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w"> </span><span class="mi">83</span><span class="p">,</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="mi">122</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w"> </span><span class="mi">196</span><span class="p">,</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w"> </span><span class="mi">155</span><span class="p">,</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w"> </span><span class="mi">154</span><span class="p">,</span><span class="w"> </span><span class="mi">185</span><span class="p">,</span><span class="w"> </span><span class="mi">144</span><span class="p">,</span><span class="w"> </span><span class="mi">131</span><span class="p" data-group-id="0727767280-5">&gt;&gt;</span><span class="p" data-group-id="0727767280-3">}</span><span class="p" data-group-id="0727767280-2">}</span></code></pre></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode/2">encode(version, payload)</a>
+
+  </div>
+
+    <div class="summary-synopsis"></div>
+
+</div>
+
+  </div>
+
+        </section>
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions
+          </h1>
+          <div class="functions-list">
+<section class="detail" id="decode/1">
+
+  <div class="detail-header">
+    <a href="#decode/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode(binary)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/base58_check.ex#L52" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>decode(b :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  {:ok, {version :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), data :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}}
+  | {:error, reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+
+      </div>
+
+<h2 id="decode/1-example" class="section-heading">
+  <a href="#decode/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Elixir.Btc.Base58Check</span><span class="o">.</span><span class="n">decode</span><span class="p" data-group-id="0727767280-1">(</span><span class="s">&quot;17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem&quot;</span><span class="p" data-group-id="0727767280-1">)</span><span class="w">
+</span><span class="p" data-group-id="0727767280-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0727767280-3">{</span><span class="p" data-group-id="0727767280-4">&lt;&lt;</span><span class="mi">0</span><span class="p" data-group-id="0727767280-4">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0727767280-5">&lt;&lt;</span><span class="mi">71</span><span class="p">,</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"> </span><span class="mi">108</span><span class="p">,</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w"> </span><span class="mi">83</span><span class="p">,</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="mi">122</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w"> </span><span class="mi">196</span><span class="p">,</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w"> </span><span class="mi">155</span><span class="p">,</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w"> </span><span class="mi">154</span><span class="p">,</span><span class="w"> </span><span class="mi">185</span><span class="p">,</span><span class="w"> </span><span class="mi">144</span><span class="p">,</span><span class="w"> </span><span class="mi">131</span><span class="p" data-group-id="0727767280-5">&gt;&gt;</span><span class="p" data-group-id="0727767280-3">}</span><span class="p" data-group-id="0727767280-2">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="encode/2">
+
+  <div class="detail-header">
+    <a href="#encode/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encode(version, payload)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/base58_check.ex#L36" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>encode(version :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), payload :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+          </div>
+        </section>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

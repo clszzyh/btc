@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="btc v0.1.0">
+
+    <title>Btc.Address — btc v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+
+    <script src="dist/sidebar_items-004ddfa7b5.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="readme.html" class="sidebar-projectName">
+btc
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+Btc.Address <small>behaviour</small> <small class="app-vsn">(btc v0.1.0)</small>
+
+          <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+
+      </h1>
+
+
+        <section id="moduledoc">
+<p>Bitcoin P2PK, P2PKH, P2SH, P2WPKH, P2WSH script/address generate and validate demo.</p><p><strong>Supported</strong></p><ul><li>P2PKH</li><li>P2SH</li><li>P2WPKH</li><li>P2WSH</li></ul><h2 id="module-usage" class="section-heading">
+  <a href="#module-usage" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Usage
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="n">entropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Btc.Util</span><span class="o">.</span><span class="n">strong_rand</span><span class="p" data-group-id="0054193323-1">(</span><span class="p" data-group-id="0054193323-1">)</span><span class="w">
+</span><span class="p" data-group-id="0054193323-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0054193323-3">{</span><span class="n">priv_key</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p" data-group-id="0054193323-3">}</span><span class="p" data-group-id="0054193323-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Btc.Address</span><span class="o">.</span><span class="n">generate</span><span class="p" data-group-id="0054193323-4">(</span><span class="ss">:p2pkh</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p">,</span><span class="w"> </span><span class="n">entropy</span><span class="p" data-group-id="0054193323-4">)</span><span class="w">
+</span><span class="no">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Btc.Address</span><span class="o">.</span><span class="n">verify?</span><span class="p" data-group-id="0054193323-5">(</span><span class="ss">:p2pkh</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p" data-group-id="0054193323-5">)</span></code></pre><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="3061066988-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3061066988-2">{</span><span class="n">priv_key</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p" data-group-id="3061066988-2">}</span><span class="p" data-group-id="3061066988-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Btc.Address</span><span class="o">.</span><span class="n">generate</span><span class="p" data-group-id="3061066988-3">(</span><span class="ss">:p2sh</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p" data-group-id="3061066988-3">)</span><span class="w">
+</span><span class="no">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Btc.Address</span><span class="o">.</span><span class="n">verify?</span><span class="p" data-group-id="3061066988-4">(</span><span class="ss">:p2sh</span><span class="p">,</span><span class="w"> </span><span class="ss">:mainnet</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p" data-group-id="3061066988-4">)</span></code></pre><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1456027343-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1456027343-2">{</span><span class="n">priv_key</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p" data-group-id="1456027343-2">}</span><span class="p" data-group-id="1456027343-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Btc.Address</span><span class="o">.</span><span class="n">generate</span><span class="p" data-group-id="1456027343-3">(</span><span class="ss">:p2wpkh</span><span class="p">,</span><span class="w"> </span><span class="ss">:testnet</span><span class="p" data-group-id="1456027343-3">)</span><span class="w">
+</span><span class="no">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Btc.Address</span><span class="o">.</span><span class="n">verify?</span><span class="p" data-group-id="1456027343-4">(</span><span class="ss">:p2wpkh</span><span class="p">,</span><span class="w"> </span><span class="ss">:testnet</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p" data-group-id="1456027343-4">)</span></code></pre>
+        </section>
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:address/0">address()</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:compression/0">compression()</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:entropy/0">entropy()</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:generate_result/0">generate_result()</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:network/0">network()</a>
+
+  </div>
+
+    <div class="summary-synopsis"><ul><li><a href="https://en.bitcoin.it/wiki/Testnet">https://en.bitcoin.it/wiki/Testnet</a></li></ul></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:private_key/0">private_key()</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:public_key/0">public_key()</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:type/0">type()</a>
+
+  </div>
+
+</div>
+
+  </div>
+
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_public_key/2">create_public_key(private_key, compression \\ :compressed)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p><a href="https://github.com/mbrix/libsecp256k1/blob/master/test/libsecp256k1_tests.erl">https://github.com/mbrix/libsecp256k1/blob/master/test/libsecp256k1_tests.erl</a></p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#generate/3">generate(type, network, entropy \\ Util.strong_rand())</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#generate_private_key/1">generate_private_key(entropy)</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#valid?/3">valid?(type, network, address)</a>
+
+  </div>
+
+</div>
+
+  </div>
+
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:address_valid?/2">address_valid?(address, network)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Given a address and a network type, check if the address is valid</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:generate_address/2">generate_address(entropy, network)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Given a 32 bytes random binary and a network type, return a valid bitcoin address.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:type/0">type()</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Return type of current module</p></div>
+
+</div>
+
+  </div>
+
+        </section>
+
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types
+          </h1>
+          <div class="types-list">
+<section class="detail" id="t:address/0">
+
+  <div class="detail-header">
+    <a href="#t:address/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">address()</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L25" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>address() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:compression/0">
+
+  <div class="detail-header">
+    <a href="#t:compression/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">compression()</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L27" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>compression() :: :compressed | :uncompressed</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:entropy/0">
+
+  <div class="detail-header">
+    <a href="#t:entropy/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">entropy()</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L20" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>entropy() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:generate_result/0">
+
+  <div class="detail-header">
+    <a href="#t:generate_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">generate_result()</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L32" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>generate_result() ::
+  {:ok, {private_key :: <a href="#t:private_key/0">private_key</a>(), address :: <a href="#t:address/0">address</a>()}} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:network/0">
+
+  <div class="detail-header">
+    <a href="#t:network/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">network()</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L24" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>network() :: :mainnet | :testnet</pre>
+
+      </div>
+
+<ul><li><a href="https://en.bitcoin.it/wiki/Testnet">https://en.bitcoin.it/wiki/Testnet</a></li></ul>
+  </section>
+</section>
+<section class="detail" id="t:private_key/0">
+
+  <div class="detail-header">
+    <a href="#t:private_key/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">private_key()</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L29" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>private_key() :: &lt;&lt;_::256&gt;&gt;</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:public_key/0">
+
+  <div class="detail-header">
+    <a href="#t:public_key/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">public_key()</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L30" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>public_key() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:type/0">
+
+  <div class="detail-header">
+    <a href="#t:type/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">type()</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L18" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>type() :: :p2wsh | :p2wpkh | :p2sh | :p2pkh</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+          </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions
+          </h1>
+          <div class="functions-list">
+<section class="detail" id="create_public_key/2">
+
+    <span id="create_public_key/1"></span>
+
+  <div class="detail-header">
+    <a href="#create_public_key/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_public_key(private_key, compression \\ :compressed)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L76" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>create_public_key(private_key :: <a href="#t:private_key/0">private_key</a>(), compression :: <a href="#t:compression/0">compression</a>()) ::
+  {:ok, <a href="#t:public_key/0">public_key</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p><a href="https://github.com/mbrix/libsecp256k1/blob/master/test/libsecp256k1_tests.erl">https://github.com/mbrix/libsecp256k1/blob/master/test/libsecp256k1_tests.erl</a></p>
+  </section>
+</section>
+<section class="detail" id="generate/3">
+
+    <span id="generate/2"></span>
+
+  <div class="detail-header">
+    <a href="#generate/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generate(type, network, entropy \\ Util.strong_rand())</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L56" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>generate(type :: <a href="#t:type/0">type</a>(), network :: <a href="#t:network/0">network</a>(), entropy :: <a href="#t:entropy/0">entropy</a>()) ::
+  <a href="#t:generate_result/0">generate_result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="generate_private_key/1">
+
+  <div class="detail-header">
+    <a href="#generate_private_key/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generate_private_key(entropy)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L66" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>generate_private_key(entropy :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  {:ok, private_key :: <a href="#t:private_key/0">private_key</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="valid?/3">
+
+  <div class="detail-header">
+    <a href="#valid?/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">valid?(type, network, address)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L61" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>valid?(type :: <a href="#t:type/0">type</a>(), network :: <a href="#t:network/0">network</a>(), address :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+          </div>
+        </section>
+
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Callbacks
+          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:address_valid?/2">
+
+  <div class="detail-header">
+    <a href="#c:address_valid?/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">address_valid?(address, network)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L40" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>address_valid?(address :: <a href="#t:address/0">address</a>(), network :: <a href="#t:network/0">network</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Given a address and a network type, check if the address is valid</p>
+  </section>
+</section>
+<section class="detail" id="c:generate_address/2">
+
+  <div class="detail-header">
+    <a href="#c:generate_address/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">generate_address(entropy, network)</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L38" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>generate_address(entropy :: <a href="#t:entropy/0">entropy</a>(), network :: <a href="#t:network/0">network</a>()) ::
+  <a href="#t:generate_result/0">generate_result</a>()</pre>
+
+      </div>
+
+<p>Given a 32 bytes random binary and a network type, return a valid bitcoin address.</p>
+  </section>
+</section>
+<section class="detail" id="c:type/0">
+
+  <div class="detail-header">
+    <a href="#c:type/0" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">type()</h1>
+
+      <a href="https://github.com/clszzyh/btc/blob/v0.1.0/lib/btc/address.ex#L36" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>type() :: <a href="#t:type/0">type</a>()</pre>
+
+      </div>
+
+<p>Return type of current module</p>
+  </section>
+</section>
+
+          </div>
+        </section>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
